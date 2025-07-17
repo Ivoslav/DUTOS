@@ -12,20 +12,20 @@ $options = [
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
 ];
 
-function log_db_event($message, PDOException $exception = null) {
+function log_db_event($message = '') {
     $log_file = __DIR__ . '/../logs/db.log';
     $timestamp = date("Y-m-d H:i:s");
     $ip = $_SERVER['REMOTE_ADDR'] ?? 'неизвестен IP';
     $agent = $_SERVER['HTTP_USER_AGENT'] ?? 'неизвестен агент';
-    $script = $_SERVER['REQUEST_URI'] ?? 'неизвестен скрипт';
+    $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
+    $caller = $trace[1]['file'] ?? 'неизвестен файл';
+    $caller_line = $trace[1]['line'] ?? '?';
 
-    $full_message = "[$timestamp] [$ip] [$script] $message | Agent: $agent";
-
-    if ($exception) {
-        $full_message .= " | Exception: " . $exception->getMessage();
-    }
-
-    file_put_contents($log_file, $full_message . PHP_EOL, FILE_APPEND);
+    $user = $_SESSION['user']['username'] ?? 'Гост';
+    $user_id = $_SESSION['user']['id'] ?? 'НЯМА';
+    
+    $full_message = "[$timestamp] [$ip] $user (#$user_id) - $message | Файл: $caller:$caller_line | Agent: $agent\n";
+    file_put_contents($log_file, $full_message, FILE_APPEND);
 }
 
 try {
