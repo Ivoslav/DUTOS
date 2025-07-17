@@ -1,5 +1,0 @@
-[2025-07-17 07:54:04] [::1] [/projects/DUTOS/dutos-api/auth/login.php] Успешен вход: ID #1 | 'ivan' (курсант) | Роля: 'user' | Екипаж: #1 | Пренасочен към: /user/home.php | Agent: PostmanRuntime/7.44.1
-[2025-07-17 07:54:12] [::1] [/projects/DUTOS/dutos-api/auth/logout.php] Потребителят 'ivan' (ID: 1) се изписа (logout) от системата. | Agent: PostmanRuntime/7.44.1
-[2025-07-17 07:54:23] [::1] [/projects/DUTOS/dutos-api/auth/register.php] Успешна регистрация и вход за 'dpetrov' (ID: 10, редник), роля 'admin', екипаж #5 → /admin/dashboard.php | Agent: PostmanRuntime/7.44.1
-[2025-07-17 07:54:32] [::1] [/projects/DUTOS/dutos-api/auth/register.php] Успешна регистрация и вход за 'ivana' (ID: 11, редник), роля 'user', екипаж #5 → /user/home.php | Agent: PostmanRuntime/7.44.1
-[2025-07-17 07:54:33] [::1] [/projects/DUTOS/dutos-api/auth/register.php] Опит за регистрация с вече съществуващо име 'ivana' | Agent: PostmanRuntime/7.44.1
