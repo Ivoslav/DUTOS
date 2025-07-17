@@ -1,4 +1,8 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $host = 'localhost';
 $db = 'DUTOS';
 $user = 'root';
@@ -12,27 +16,14 @@ $options = [
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
 ];
 
-function log_db_event($message = '') {
-    $log_file = __DIR__ . '/../logs/db.log';
-    $timestamp = date("Y-m-d H:i:s");
-    $ip = $_SERVER['REMOTE_ADDR'] ?? 'неизвестен IP';
-    $agent = $_SERVER['HTTP_USER_AGENT'] ?? 'неизвестен агент';
-    $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
-    $caller = $trace[1]['file'] ?? 'неизвестен файл';
-    $caller_line = $trace[1]['line'] ?? '?';
-
-    $user = $_SESSION['user']['username'] ?? 'Гост';
-    $user_id = $_SESSION['user']['id'] ?? 'НЯМА';
-    
-    $full_message = "[$timestamp] [$ip] $user (#$user_id) - $message | Файл: $caller:$caller_line | Agent: $agent\n";
-    file_put_contents($log_file, $full_message, FILE_APPEND);
-}
+// Включваш логера веднъж
+require_once(__DIR__ . '/../utils/logger.php');
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
     log_db_event("Успешна връзка с базата '$db'");
 } catch (PDOException $e) {
-    log_db_event("Грешка при връзка с базата", $e);
+    log_db_event("Грешка при връзка с базата: " . $e->getMessage());
     http_response_code(500);
     echo json_encode(["error" => "Database connection failed"]);
     exit;
@@ -57,7 +48,7 @@ function pdo_query(PDO $pdo, string $sql, array $params = []) {
         return $stmt;
     } catch (PDOException $e) {
         $paramStr = json_encode($params);
-        log_db_event("SQL грешка при \"$sql\" с параметри $paramStr", $e);
+        log_db_event("SQL грешка при \"$sql\" с параметри $paramStr: " . $e->getMessage());
         throw $e;
     }
 }

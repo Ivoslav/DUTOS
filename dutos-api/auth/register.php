@@ -1,16 +1,9 @@
 <?php
 session_start();
 header("Content-Type: application/json");
-require_once("../config/db.php");
 
-function log_auth_event($message) {
-    $log_file = __DIR__ . '/../logs/auth.log';
-    $timestamp = date("Y-m-d H:i:s");
-    $ip = $_SERVER['REMOTE_ADDR'] ?? 'неизвестен IP';
-    $agent = $_SERVER['HTTP_USER_AGENT'] ?? 'неизвестен агент';
-    $script = $_SERVER['REQUEST_URI'] ?? 'неизвестен скрипт';
-    file_put_contents($log_file, "[$timestamp] [$ip] [$script] $message | Agent: $agent\n", FILE_APPEND);
-}
+require_once("../config/db.php");
+require_once("../utils/logger.php"); // ← централизираният логър
 
 $data = json_decode(file_get_contents("php://input"), true);
 $username = trim($data['username'] ?? '');
@@ -43,13 +36,15 @@ $hashed = password_hash($password, PASSWORD_DEFAULT);
 $stmt = $pdo->prepare("INSERT INTO users (username, password, name, rank, role, crew_id) VALUES (?, ?, ?, ?, ?, ?)");
 $stmt->execute([$username, $hashed, $name, $rank, $role, $crew_id]);
 
+$user_id = $pdo->lastInsertId();
+
 $_SESSION['user'] = [
-    "id" => $pdo->lastInsertId(),
-    "name" => $name,
+    "id"       => $user_id,
+    "name"     => $name,
     "username" => $username,
-    "rank" => $rank,
-    "role" => $role,
-    "crew_id" => $crew_id
+    "rank"     => $rank,
+    "role"     => $role,
+    "crew_id"  => $crew_id
 ];
 
 $redirect = match ($role) {
@@ -58,12 +53,10 @@ $redirect = match ($role) {
     default   => '/user/home.php'
 };
 
-log_auth_event("Успешна регистрация и вход за '$username'($rank) с роля '$role', екипаж #$crew_id (пренасочен към $redirect)");
+log_auth_event("Успешна регистрация и вход за '$username' (ID: $user_id, $rank), роля '$role', екипаж #$crew_id → $redirect");
 
 echo json_encode([
     "success" => true,
     "message" => "Регистрацията е успешна.",
     "redirect" => $redirect
 ]);
-
-?>
