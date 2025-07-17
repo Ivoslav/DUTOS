@@ -1,0 +1,4 @@
+[2025-07-17 09:56:04] [::1] [/projects/DUTOS/dutos-api/auth/logout.php] Потребителят 'Гост' (ID: непознат ID) се изписа (logout) от системата. | Agent: PostmanRuntime/7.44.1
+[2025-07-17 09:56:14] [::1] [/projects/DUTOS/dutos-api/auth/login.php] Успешен вход: ID #1 | 'ivan' (курсант) | Роля: 'user' | Екипаж: #1 | Пренасочен към: /user/home.php | Agent: PostmanRuntime/7.44.1
+[2025-07-17 09:58:03] [::1] [/projects/DUTOS/dutos-api/auth/login.php] Успешен вход: ID #1 | 'ivan' (курсант) | Роля: 'user' | Екипаж: #1 | Пренасочен към: /user/home.php | Agent: PostmanRuntime/7.44.1
+[2025-07-17 10:00:02] [::1] [/projects/DUTOS/dutos-api/auth/login.php] Успешен вход: ID #1 | 'ivan' (курсант) | Роля: 'user' | Екипаж: #1 | Пренасочен към: /user/home.php | Agent: PostmanRuntime/7.44.1
