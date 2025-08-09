@@ -2,3 +2,5 @@
 [2025-07-17 09:56:14] [::1] [/projects/DUTOS/dutos-api/auth/login.php] Успешен вход: ID #1 | 'ivan' (курсант) | Роля: 'user' | Екипаж: #1 | Пренасочен към: /user/home.php | Agent: PostmanRuntime/7.44.1
 [2025-07-17 09:58:03] [::1] [/projects/DUTOS/dutos-api/auth/login.php] Успешен вход: ID #1 | 'ivan' (курсант) | Роля: 'user' | Екипаж: #1 | Пренасочен към: /user/home.php | Agent: PostmanRuntime/7.44.1
 [2025-07-17 10:00:02] [::1] [/projects/DUTOS/dutos-api/auth/login.php] Успешен вход: ID #1 | 'ivan' (курсант) | Роля: 'user' | Екипаж: #1 | Пренасочен към: /user/home.php | Agent: PostmanRuntime/7.44.1
+[2025-07-17 15:58:02] [::1] [/projects/DUTOS/dutos-api/auth/login.php] Успешен вход: ID #1 | 'ivan' (курсант) | Роля: 'user' | Екипаж: #1 | Пренасочен към: /user/home.php | Agent: PostmanRuntime/7.44.1
+[2025-07-17 15:58:24] [::1] [/projects/DUTOS/dutos-api/auth/register.php] Успешна регистрация и вход за 'ivana' (ID: 12, редник), роля 'user', екипаж #5 → /user/home.php | Agent: PostmanRuntime/7.44.1
