@@ -1,107 +1,50 @@
-# DUTOS — Система за управление на наряди, отпуски и служебни задължения
+# DUTOS (Legacy PHP Version)
 
-### DUTOS — Duty, Leave and Task Organization System
+⚠️ **Това е първата версия на DUTOS, изградена с чист PHP + MySQL.**
+Тя вече е **заменена от новата Laravel-базирана версия**: 👉 [DUTOS v2](https://github.com/Ivoslav/dutos-v2)
 
 ---
 
 ## 📝 Описание | Description
 
-**DUTOS** е вътрешна уеб система за военно поделение, която осигурява централизирано управление на наряди, отпуски, командировки, екипажи и войници.
-**DUTOS** is an internal web-based system for military units, providing centralized management of duties, leaves, assignments, crews, and personnel.
+**DUTOS (v1)** е вътрешна уеб система за военно поделение, изградена на **PHP + MySQL** със структура за:
+
+* наряди и графици
+* отпуски и командировки
+* екипажи и войници
+* базови логове и потребителска система
+
+**DUTOS v1** is the original internal web-based system for military units, built with **PHP + MySQL**, providing duty scheduling, leave management, crew/personnel tracking, and basic logging.
 
 ---
 
-## ⚙️ Основни функции | Key Features
+## 📌 Статус на проекта | Project Status
 
-* 🔐 Сигурен вход с ролево разпределение
-  🔐 Secure login with role-based redirection
-* 🧏 Управление на потребители и екипажи
-  🧏 User and crew management
-* 🗓️ Наряди, графици и замествания
-  🗓️ Duty scheduling and replacements
-* ✈️ Отпуски и командировки
-  ✈️ Leave and travel assignment tracking
-* 🧾 Системни логове и достъпност
-  🧾 System logging and accountability
-* 📊 Справки и експортиране (в процес на разработка)
-  📊 Reporting and export tools (under development)
+* ✅ Работещ прототип (PHP + MySQL)
+* ❌ Не се развива активно
+* 🚀 Новата версия се поддържа в [DUTOS v2 (Laravel)](https://github.com/Ivoslav/dutos-v2)
 
 ---
 
-## 🧱 Структура на проекта | Project Structure
+## 🔄 Миграция към v2 | Migration to v2
 
-```
-dutos/
-├── dutos-api/              # PHP backend (API)
-│   ├── auth/               # Вход / Login / Logout
-│   ├── config/             # Конфигурация на база данни / DB config
-│   ├── utils/              # Помощни функции / Utilities (logger, etc.)
-│   ├── users/              # Потребителски модули / User management
-│   └── ...
-│
-├── public/                 # Интерфейс (бъдещ SPA) / Frontend (future SPA)
-├── logs/                   # Логове / Logs
-└── README.md               # Информация за проекта / Project info
-```
+За нови разработки и поддръжка премини към **[DUTOS v2](https://github.com/Ivoslav/dutos-v2)**, който е изграден с:
 
----
-
-## 💾 Изисквания | Requirements
-
-* PHP 8.0+
-* MySQL 5.7+ или MariaDB
-* Apache (препоръчително чрез XAMPP)
-* Активиран `mod_rewrite` за пренаписване на URL (optional)
-
----
-
-## 🚀 Стартиране | Getting Started
-
-1. Клонирай проекта / Clone the repo:
-
-   ```bash
-   git clone https://github.com/Ivoslav/DUTOS.git
-   ```
-
-2. Импортирай `dutos.sql` в MySQL (ако е наличен)
-   Import `dutos.sql` into MySQL (if available)
-
-3. Настрой `config/db.php` с локални настройки
-   Configure `config/db.php` with local DB credentials
-
-4. Стартирай XAMPP и достъпи системата:
-   Start XAMPP and access:
-
-   ```
-   http://localhost/projects/DUTOS/public/
-   ```
-
-   или / or:
-
-   ```
-   http://localhost/projects/DUTOS/dutos-api/
-   ```
-
----
-
-## 🚰 Планирани подобрения | Upcoming Features
-
-* SPA интерфейс с Vue или React
-  SPA frontend using Vue or React
-* PDF/Excel експортиране на справки
-  PDF/Excel report exports
-* Известия и съобщения
-  Notification and messaging system
-* Панел за администратори и настройки
-  Admin dashboard and settings
+* Laravel 11
+* PHP 8.2+
+* MariaDB/PostgreSQL
+* Поддръжка на REST API, роли и SPA frontend (предстоящ)
 
 ---
 
 ## 🛡️ Лиценз | License
 
-Този проект е с вътрешна цел и не е предназначен за публична употреба без съгласие.
-This project is for internal use and not intended for public distribution without permission.
+Този проект е архивирана версия за справка и вече **не е предназначен за активна употреба**.
+This project is archived and **not intended for active use**.
 
 ---
 
 **Автор / Author**: [Ivoslav Petkov](https://github.com/Ivoslav)
+
+---
+
